@@ -37,6 +37,7 @@ object GenCustomSimdAdd extends App{
           executeInsertion = false
         ),
         new FullBarrelShifterPlugin,
+        //new InformationFlowTrackingPlugin,
         new HazardSimplePlugin(
           bypassExecute           = true,
           bypassMemory            = true,

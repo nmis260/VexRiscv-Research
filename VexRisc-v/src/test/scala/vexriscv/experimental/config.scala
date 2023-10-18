@@ -12,11 +12,14 @@ object Presentation extends App{
   val config = VexRiscvConfig()
 
   config.plugins ++= List(
-//    new IBusSimplePlugin(resetVector = 0x80000000l),
+    new IBusSimplePlugin(resetVector = 0x80000000l,
+                        cmdForkOnSecondStage = true,
+                        cmdForkPersistence = false),
     new DBusSimplePlugin,
     new CsrPlugin(CsrPluginConfig.smallest),
     new DecoderSimplePlugin,
     new InformationFlowTrackingPlugin,
+    new NBitsPlugin(n: Int),
     new RegFilePlugin(regFileReadyKind = plugin.SYNC),
     new IntAluPlugin,
     new SrcPlugin,
